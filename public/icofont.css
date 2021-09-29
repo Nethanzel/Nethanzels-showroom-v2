@@ -33,39 +33,39 @@ url("./fonts/icofont.woff") format("woff");
   -webkit-font-smoothing: antialiased;
 }
 
-.icofont-hand-power:before
+.icofont-trophy:before
 {
-  content: "\e810";
+  content: "\edd7";
 }
 
-.icofont-user-alt-4:before
+.icofont-ui-rating:before
 {
-  content: "\ecfe";
+  content: "\ec7c";
 }
 
-.icofont-muscle:before
+.icofont-telegram:before
 {
-  content: "\eb3a";
+  content: "\ed75";
 }
 
-.icofont-bag-alt:before
+.icofont-facebook:before
 {
-  content: "\eeab";
+  content: "\ed37";
 }
 
-.icofont-map-pins:before
+.icofont-navigation-menu:before
 {
-  content: "\ef8a";
-}
-
-.icofont-envelope:before
-{
-  content: "\ef14";
+  content: "\efa2";
 }
 
 .icofont-connection:before
 {
   content: "\eeef";
+}
+
+.icofont-envelope:before
+{
+  content: "\ef14";
 }
 
 .icofont-xs

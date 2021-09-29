@@ -1,25 +1,26 @@
 <template>
-  <div class="notfound">
+  <div class="market">
     <div>
-      <h1>You're missing something!.</h1>
-      <h2>What you're looking for, is not here.</h2>
+      <h1>Working on this!.</h1>
+      <h2>Here i'll show software or any service you can buy/hire from me.</h2>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "notFound",
-  title: "Nethanzêl Showroom (404)"
+  name: "Market",
+  title: "Nethanzêl's Showroom"
 };
 </script>
 
 <style scoped lang="scss">
-.notfound {
+.market {
+  height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   height: 100vh;
 }
 
@@ -27,14 +28,12 @@ h1 {
   font-size: 75px;
   letter-spacing: 3px;
   cursor: default;
-  color: #fff;
 }
 
 h2 {
   font-size: 35px;
   letter-spacing: 2px;
   cursor: default;
-  color: #fff;
 }
 
 @media screen and (max-width: 660px) {

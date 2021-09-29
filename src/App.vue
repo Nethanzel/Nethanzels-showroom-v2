@@ -1,85 +1,47 @@
 <template>
-
   <div id="app">
-
-    <div id="gBackground"></div>
-
-    <div id="head">
-      <thisHeader />
-    </div>
-
-    <div id="headText">
-      <h1 id="title">Nethanzêl Abad</h1>
-      <p>Close to graduate Systems and computing engenieer.</p>
-      <p>Web developer (Front end {{expChar}} Back end).</p>
-      <p>Desktop developer.</p>
-    </div>
-
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view />
     </transition>
-
   </div>
-
 </template>
 
 <script>
-import thisHeader from '@/components/aboutHeader.vue'
-
 export default {
   name: "App",
   title: "Nethanzêl's Showroom",
-  components: {
-    thisHeader
-  },
-  data() {
-    return {
-      expChar: "&"
-    }
+
+  beforeMount() {
+    this.client();
   }
-}
+};
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Carme&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Carme&display=swap');
-
-*{
-  color: #fff;
+* {
+  text-decoration: none;
   padding: 0;
   margin: 0;
-  font-family: 'Carme';
+  font-family: "Carme";
   letter-spacing: 1px;
 }
 
 #app {
   text-align: center;
-  max-width: 1366px;
   margin: 0 auto;
+  background: #000;
+  min-height: 100vh;
 }
 
-#gBackground {
-  width: 300%;
-  position: fixed;
-  display: flex;
-  z-index: -1;
-  background: linear-gradient(-90deg, #fff 50%, #000 50%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transform-origin: center;
-  transition: transform 1s;
-  overflow: hidden;
-  top: -9998px;
-  bottom: -9998px;
-  left: -9998px;
-  right: -9998px;
-  margin: auto; 
+h1 {
+  font-size: 50px;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: .6s;
+  transition-duration: 0.6s;
   transition-property: opacity;
   transition-timing-function: ease;
 }
@@ -89,136 +51,31 @@ export default {
   opacity: 0;
 }
 
-#title {
-  font-size: 60px;
-  font-weight: bold;
-  transition: 0.5s ease-in-out;
-  mix-blend-mode: difference;
-  color: #fff;
-}
-
-#head {
-  display: flex;
-  position: fixed;
+.spinerParent {
   width: 100%;
-  height: 500px;
-  visibility: hidden;
-  opacity: 0;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  transition: all 0.5s ease-in-out;
-
-  max-width: 1366px;
-  margin: 0 auto;
-}
-
-#headText {
-  mix-blend-mode: difference;
-  will-change: opacity;
-  position: fixed;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 610px;
-  padding-top: 20px;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
 
-  max-width: 1366px;
-  margin: 0 auto;
+  overflow: hidden;
 }
 
-
-h1 {
-  font-size: 50px;
+.spinerParent img {
+  height: 5vh;
+  width: 5vh;
+  animation: 1.3s rotate360 infinite linear;
 }
 
-@media only screen and (max-height: 800px) {
-  #head {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    height: 400px;
-    visibility: hidden;
-    opacity: 0;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    transition: all 0.5s ease-in-out;
-  }
-
-  #headText{
-    mix-blend-mode: difference;
-    will-change: opacity;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: 520px;
-    padding-top: 20px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
+@keyframes rotate360 {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@media screen and (max-width: 770px) {
-
-  #title {
-    font-size: 47px;
-    font-weight: bold;
-    transition: 0.5s ease-in-out;
-    mix-blend-mode: difference;
-    color: #fff;
+@-webkit-keyframes rotate360 {
+  to {
+    transform: rotate(360deg);
   }
-
-  #head {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    height: 320px;
-    visibility: hidden;
-    opacity: 0;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    transition: all 0.5s ease-in-out;
-  }
-
-  #headText {
-    mix-blend-mode: difference;
-    will-change: opacity;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: 390px;
-    padding-top: 20px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-  }
-
-  #headText p {
-    font-size: 11px;
-  }
-
-  h1 {
-  font-size: 40px;
-  }
-
-  
-
 }
-
-
-
 </style>

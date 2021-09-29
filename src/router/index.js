@@ -1,15 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
-import Projects from "../views/Projects.vue";
-import Skills from "../views/Skills.vue";
-import Contact from "../views/Contact.vue";
 import Timeline from "../views/Timeline.vue";
+import Market from "../views/Market.vue";
 import notFound from "../views/notFound.vue";
+import Home from "../views/Mixer.vue";
+import projectsAll from "../views/projectsAll.vue";
+import Contact from "../components/Contact.vue";
+import projectsOne from "../views/projectsOne.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -18,29 +18,29 @@ const routes = [
     component: Home
   },
   {
-    path: "/about",
-    name: "About",
-    component: About
+    path: "/timeline",
+    name: "Timeline",
+    component: Timeline
+  },
+  {
+    path: "/market",
+    name: "Market",
+    component: Market
   },
   {
     path: "/projects",
     name: "Projects",
-    component: Projects
+    component: projectsAll
   },
   {
-    path: "/skills",
-    name: "Skilss",
-    component: Skills
+    path: "/projects/:query",
+    name: "Project",
+    component: projectsOne
   },
   {
     path: "/contact",
     name: "Contact",
     component: Contact
-  },
-  {
-    path: "/timeline",
-    name: "Timeline",
-    component: Timeline
   },
   {
     path: "*",
@@ -52,37 +52,30 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
+  // eslint-disable-next-line no-unused-vars
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        behavior: "smooth"
+      };
+    }
+  }
 });
-
-function getRandomArbitrary(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
-let x = [0, 90, 180, 270, 360]; //define your options
-let ang;
-let rotate;
 
 // eslint-disable-next-line no-unused-vars
 router.beforeEach((to, from, next) => {
-
-  rotate = document.getElementById("gBackground")
-  let oAng = ang;
-  ang = getRandomArbitrary(0, 5); //pick one option
-
-  while(ang == oAng) { //your option can't be the one you picked before
-    ang = getRandomArbitrary(0, 5);
+  // ================================================================================
+  if (to.hash == "#about" || to.hash == "#projects" || to.hash == "#skills") {
+    return next();
+  } else {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
   }
-
-  if(rotate != null) {
-    if(to.name == "Home") {
-      rotate.style.transform = `rotate(0deg)`
-    } else rotate.style.transform = `rotate(${x[ang]}deg)`
-  }
-// ================================================================================
-  setTimeout(() => { window.scrollTo(0, 0) }, 600);
-// ================================================================================
-  next()
-}) 
+  // ================================================================================
+  next();
+});
 
 export default router;
